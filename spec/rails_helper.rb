@@ -8,6 +8,7 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'database_cleaner'
+require 'rails_jwt_auth/spec_helpers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -62,6 +63,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # JWT Rails helpers
+  config.include RailsJwtAuth::SpecHelpers, type: :controller
+
   # Test helpers
   config.include FactoryBot::Syntax::Methods
 
@@ -84,5 +88,12 @@ RSpec.configure do |config|
 
   config.append_after(:each) do
     DatabaseCleaner.clean
+  end
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
 end

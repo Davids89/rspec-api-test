@@ -26,9 +26,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 
 gem 'as_json_representations'
+gem 'rails_jwt_auth'
 
 group :test do
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
