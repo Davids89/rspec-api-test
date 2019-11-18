@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_105251) do
+ActiveRecord::Schema.define(version: 2019_11_18_152617) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
-    t.string "editorial"
     t.integer "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "editorial_id"
+    t.index ["editorial_id"], name: "index_books_on_editorial_id"
+  end
+
+  create_table "editorials", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_105251) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "books", "editorials"
   add_foreign_key "operations", "books"
   add_foreign_key "operations", "operation_types"
   add_foreign_key "operations", "users"

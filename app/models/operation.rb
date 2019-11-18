@@ -7,7 +7,7 @@
 #
 
 class Operation < ApplicationRecord
-    belongs_to :user
-    belongs_to :book
-    belongs_to :operation_type
+  belongs_to :user, dependent: :nullify
+  belongs_to :book, dependent: :nullify
+  belongs_to :operation_type, dependent: :nullify
 end

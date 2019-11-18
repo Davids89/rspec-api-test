@@ -3,7 +3,6 @@
 # Table name: books
 #
 #  id         :integer          not null, primary key
-#  editorial  :string
 #  name       :string
 #  year       :integer
 #  created_at :datetime         not null
@@ -11,5 +10,10 @@
 #
 
 class Book < ApplicationRecord
-    has_many :operations
+  include BookRepresentations
+
+  has_many :operations, dependent: :destroy
+  belongs_to :editorial
+
+  accepts_nested_attributes_for :editorial
 end

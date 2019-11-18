@@ -16,5 +16,5 @@ class User < ApplicationRecord
   include UserRepresentations
   include RailsJwtAuth::Authenticatable
 
-  has_many :operations, dependent: :nullify
+  has_many :operations, dependent: :destroy
 end

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :session, controller: 'rails_jwt_auth/sessions', only: [:create, :destroy]
 
   resources :users, only: :index
+  resources :books, only: :create
 end
