@@ -16,4 +16,6 @@ class Book < ApplicationRecord
   belongs_to :editorial
 
   accepts_nested_attributes_for :editorial
+
+  validates :name, length: {minimun: 5, maximum: 25}
 end
