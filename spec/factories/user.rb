@@ -4,5 +4,9 @@ FactoryBot.define do
     surname { 'Rodriguez' }
     email { Faker::Internet::unique.email }
     password { 'aaa' }
+
+    trait :admin do
+      admin { true }
+    end
   end
 end

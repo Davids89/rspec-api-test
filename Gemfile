@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'as_json_representations'
 gem 'rails_jwt_auth'
+gem 'pundit'
 
 group :test do
   gem 'database_cleaner'

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include RailsJwtAuth::AuthenticableHelper
+  include Pundit
 
   rescue_from RailsJwtAuth::NotAuthorized, with: :render_401
 
