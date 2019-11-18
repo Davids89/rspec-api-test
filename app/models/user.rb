@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
+#  admin           :boolean          default(FALSE)
 #  auth_tokens     :string
 #  email           :string
 #  name            :string
@@ -17,4 +18,8 @@ class User < ApplicationRecord
   include RailsJwtAuth::Authenticatable
 
   has_many :operations, dependent: :destroy
+
+  def is_admin?
+    return admin
+  end
 end
